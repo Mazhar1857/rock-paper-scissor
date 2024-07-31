@@ -1,0 +1,292 @@
+.result {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+
+    .col {
+        color: white;
+        font-weight: bold;
+        position: relative;
+        z-index: 20;
+    }
+
+    .btn {
+        display: grid;
+        overflow: hidden;
+        position: relative;
+        z-index: 20;
+
+
+        >div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+
+            >div {
+                font-weight: bold;
+                color: white;
+                letter-spacing: 0;
+                text-wrap: nowrap;
+            }
+
+            button {
+                background-color: white;
+                color: #3B4262;
+                font-family: inherit;
+                font-weight: 600;
+                border: none;
+            }
+        }
+    }
+
+    .you-picked {
+        grid-area: youPick;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
+
+    .house-picked {
+        grid-area: housePick;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+
+        >div:first-child {
+            border-radius: 100vmax;
+            background-color: #000000;
+            opacity: 0.1;
+            position: absolute;
+        }
+
+    }
+
+    .won {
+        border-radius: 100vmax;
+        position: relative;
+        z-index: 1;
+    }
+}
+
+
+@media(min-width:550px) {
+    .result {
+
+        grid-template-columns: 1fr 0 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas: 'you btn house'
+            'youPick btn housePick';
+        transition: grid-template-columns 0.5s ease;
+
+        .col {
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+        }
+
+        .you {
+            grid-area: you;
+        }
+
+        .btn {
+            grid-area: btn;
+            margin-top: 50px;
+            grid-template-columns: 0;
+            transition: grid-template-columns 0.5s ease;
+
+            >div {
+
+                >div {
+                    font-size: 3.5em;
+                    margin-bottom: 16px;
+                }
+
+                button {
+                    font-size: 1em;
+                    letter-spacing: 2.5px;
+                    width: 220px;
+                    height: 48px;
+                    border-radius: 8px;
+                }
+            }
+        }
+
+        .house {
+            grid-area: house;
+        }
+
+        .you-picked {
+            width: 292.61px;
+            height: 300px;
+        }
+
+        .house-picked {
+
+            width: 292.61px;
+            height: 300px;
+
+            >div:first-child {
+                width: 224.63px;
+                height: 224.63px;
+            }
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .unhide {
+            transform: scale(1.4);
+        }
+
+        .won {
+            box-shadow: 0 0 0 0px rgba(54, 72, 109, 0.5),
+                0 0 0 0px rgba(54, 72, 109, 0.3),
+                0 0 0 0px rgba(54, 72, 109, 0.1);
+            transition: 1s ease-in-out;
+        }
+
+    }
+
+    .result.declared {
+
+        grid-template-columns: 1fr 293px 1fr;
+        transition: grid-template-columns 0.5s ease;
+
+        .btn {
+            grid-template-columns: 220px;
+            transition: grid-template-columns 0.5s ease;
+        }
+
+        .won.add {
+            box-shadow: 0 0 0 40px rgba(54, 72, 109, 0.5),
+                0 0 0 80px rgba(54, 72, 109, 0.3),
+                0 0 0 120px rgba(54, 72, 109, 0.1);
+            transition: 1s ease-in-out;
+        }
+
+        .won.remove {
+            box-shadow: 0 0 0 30px rgba(54, 72, 109, 0.5),
+                0 0 0 60px rgba(54, 72, 109, 0.3),
+                0 0 0 90px rgba(54, 72, 109, 0.1);
+
+            transition: 1s ease-in-out;
+        }
+    }
+}
+
+@media(max-width:550px) {
+
+    .result {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: 'youPick housePick'
+            'you house'
+            'btn btn';
+        transition: grid-template-columns 0.5s ease;
+        column-gap: 1.5rem;
+
+
+        .col {
+            font-size: 0.93rem;
+            letter-spacing: 1.88px;
+            margin-top: 17px;
+        }
+
+        .you {
+            grid-area: you;
+        }
+
+        .btn {
+            grid-area: btn;
+            margin-top: 3.875rem;
+            grid-template-columns: 0;
+            transition: grid-template-columns 0.5s ease;
+
+            >div {
+                row-gap: 1rem;
+
+                >div {
+                    font-size: 3.5em;
+                    height: 67px;
+                }
+
+                button {
+                    font-size: 1rem;
+                    letter-spacing: 2.5px;
+                    width: 220px;
+                    height: 48px;
+                    border-radius: 8px;
+                }
+            }
+        }
+
+        .house {
+            grid-area: house;
+        }
+
+        .house-picked {
+
+            >div:first-child {
+                width: 110px;
+                height: 110px;
+            }
+        }
+
+        .you-picked.lose {
+            z-index: 10;
+        }
+
+        .house-picked.lose {
+            z-index: 10;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .won {
+            box-shadow: 0 0 0 0px rgba(54, 72, 109, 0.5),
+                0 0 0 0px rgba(54, 72, 109, 0.3),
+                0 0 0 0px rgba(54, 72, 109, 0.1);
+            transition: 1s ease-in-out;
+        }
+
+    }
+
+    .result.declared {
+        grid-template-columns: 1fr 1fr;
+        transition: grid-template-columns 0.5s ease;
+
+        .btn {
+            grid-template-columns: 220px;
+            transition: grid-template-columns 0.5s ease;
+        }
+
+        .won.add {
+            box-shadow: 0 0 0 40px rgba(54, 72, 109, 0.5),
+                0 0 0 80px rgba(54, 72, 109, 0.3),
+                0 0 0 120px rgba(54, 72, 109, 0.1);
+            transition: 1s ease-in-out;
+            position: relative;
+
+        }
+
+        .won.remove {
+            box-shadow: 0 0 0 30px rgba(54, 72, 109, 0.5),
+                0 0 0 60px rgba(54, 72, 109, 0.3),
+                0 0 0 90px rgba(54, 72, 109, 0.1);
+
+            transition: 1s ease-in-out;
+            position: relative;
+
+        }
+    }
+
+}

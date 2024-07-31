@@ -1,0 +1,60 @@
+.play-board.selecting {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 'paper scissor'
+        'rock rock';
+    justify-items: center;
+    align-items: center;
+
+
+    .triangle {
+        position: absolute;
+        z-index: 1;
+    }
+
+    .paper-section {
+        position: relative;
+        grid-area: paper;
+        z-index: 10;
+    }
+
+
+    .scissor-section {
+        grid-area: scissor;
+        z-index: 10;
+    }
+
+    .rock-section {
+        grid-area: rock;
+        z-index: 10;
+    }
+
+}
+
+@media(min-width:550px) {
+
+    .play-board.selecting {
+        gap: 10px 60px;
+
+        .triangle {
+            top: 90px;
+            width: 300px;
+        }
+
+    }
+
+}
+
+@media(max-width:550px) {
+    .play-board.selecting {
+        gap: 15px 51px;
+
+        .triangle {
+            top: 65px;
+            width: 168px;
+        }
+
+    }
+}
